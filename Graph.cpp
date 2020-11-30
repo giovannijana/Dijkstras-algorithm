@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <queue>
+#include <climits>
 
 Graph::Graph() : vSize(0), eSize(0) {}
 
@@ -143,7 +144,7 @@ struct distanceComparator {
 unsigned long Graph::shortestPath(std::string startLabel, std::string endLabel, std::vector<std::string>& path) {
 
     unsigned long i, j;
-    unsigned long minimumDistance = LONG_MAX;
+    long minimumDistance = LONG_MAX;
 
     Vertex* currentVertex;
 
