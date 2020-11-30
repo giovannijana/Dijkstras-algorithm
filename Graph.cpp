@@ -8,7 +8,22 @@
 
 Graph::Graph() : vSize(0), eSize(0) {}
 
-Graph::~Graph() {}
+Graph::~Graph() {
+
+    // delete all edges, then all vertices
+
+    unsigned long i;
+    for (i = 0; i < eSize; i++)
+    {
+        delete edgeSeq.at(i);
+    }
+
+    for (i = 0; i < vSize; i++)
+    {
+        delete vertSeq.at(i);
+    }
+
+}
 
 void Graph::addVertex(std::string label) {
     //create new vertex
@@ -205,8 +220,6 @@ unsigned long Graph::shortestPath(std::string startLabel, std::string endLabel, 
         }
         Du->visit();
 
-        //POSSIBLE FIXME: create and use an "incident edges" function that returns
-        //all edges incident to a given vertex
         for (i = 0; i < edgeSeq.size(); i++)
         {
             if (edgeSeq[i]->getVert1Label() == currentVertex->getLabel()) //finding an edge incident to the current vertex
